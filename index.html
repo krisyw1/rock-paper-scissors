@@ -8,9 +8,25 @@
 
 <body>
   <script>
-    //play a game (3 of 5) round sof rock/paper/scissors
-
-    //play a round of rock/paper/scissors
+    //play a game  round sof rock/paper/scissors
+    function game(win){
+      let computerScore = 0;
+      let playerScore = 0;
+      while (computerScore < 3 || playerScore < 3){
+        win = playRound();
+        if (win == true){
+          playerScore++;
+        } else if (win == false){
+          computerScore++;
+        }
+      }
+      if(computerScore > playerScore){
+        alert(`Oh no! you lost ${computerScore} to ${playerScore}.`);
+      }else if (playerScore > computerScore){
+        alert(`Well done! you won ${playerScore} to ${computerScore}.`);
+      }
+    }
+    
 
 
     //computer chooses rock/paper/scissors
@@ -27,7 +43,7 @@
       }
       //else 3 return scissors
       else {
-        return "scizzors";
+        return "scissors";
       }
 
     }
@@ -52,12 +68,13 @@
       computerSelection = computerPlay();
       let playerWin = false;
       //check for draw
-      if (playerSelection == computerSelection) {
-        return alert(`WOW! ${computerSelection} against ${playerSelection} it's a draw!`)
+      if (playerSelection === computerSelection) {
+        alert(`WOW! ${computerSelection} against ${playerSelection} it's a draw!`);
+        playRound();
       } else if (playerSelection != computerSelection) {
         //if user = rock
         if (playerSelection == "rock") {
-          //if comp = scizzors
+          //if comp = scissors
           if (computerSelection == "scissors") {
             //win
             playerWin = true;
@@ -79,7 +96,7 @@
           }
         }
 
-        //if user = scizzor
+        //if user = scissor
         if (playerSelection == "scissors") {
           //if comp = paper
           if (computerSelection == "paper") {
@@ -92,14 +109,16 @@
         }
         //update scores announce round winner
         if (playerWin == true) {
-          return alert(`You win! ${playerSelection} beats ${computerSelection}.`);
+          alert(`You win! ${playerSelection} beats ${computerSelection}.`);
+          return true;
         } else if (playerWin == false) {
-          return alert(`You loose! ${computerSelection} beats ${playerSelection}`);
+          alert(`You loose! ${computerSelection} beats ${playerSelection}`);
+          return false;
         }
       }
     }
 
-    //if either score is 3 announce game winner
+    
   </script>
 </body>
 
