@@ -14,23 +14,31 @@
         let randoNum = Math.floor(Math.random()*3)+1;
           //if 1 return rock
           if (randoNum == 1){
-            return "Rock";
+            return "rock";
           }
           //else if 2 return paper
           else if ( randoNum == 2){
-            return "Paper";
+            return "paper";
           }
           //else 3 return scissors
           else {
-            return "Scizzors";
+            return "scizzors";
           }
          
       }
         
-
+      function playerPlay(){ 
      // Prompt User for input, string, case insensitve, rock paper scissors
         //prompt user for input
-        //de-case
+        var userChoice = prompt("Rock, Paper or Scissors?");
+        //lowercase & validate
+        userChoice = userChoice.toLowerCase();
+        if (userChoice == "rock" || userChoice == "paper" || userChoice == "scissors"){
+          return userChoice;
+        } else {
+          playerPlay();
+        }
+      }
 
       //compare user and computer choice
         //update scores
