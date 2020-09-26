@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <script>
+    //play 5 round game 
+    function game(win){
+      let computerScore = 0;
+      let playerScore = 0;
+      let i = 0;
+      for (i = 0; i < 5; i++){
+        win = playRound();
+        if (win == true){
+          playerScore++;
+        } else if (win == false){
+          computerScore++;
+        }
+        //alert(`win ${win} playerScore ${playerScore} computerscore ${computerScore} round ${i}`)
+      }
+      if(computerScore > playerScore){
+        alert(`Oh no! you lost ${computerScore} to ${playerScore}.`);
+      }else if (playerScore > computerScore){
+        alert(`Well done! you won ${playerScore} to ${computerScore}.`);
+      }
+    }
+    
+
+
+    //computer chooses
+    function computerPlay() {
+      let randoNum = Math.floor(Math.random() * 3) + 1;
+      if (randoNum == 1) {
+        return "rock";
+      }
+      else if (randoNum == 2) {
+        return "paper";
+      }
+      else {
+        return "scissors";
+      }
+
+    }
+
+    function playerPlay() {
+      // Prompt User for input, string, case insensitve,
+      let userChoice = prompt("Rock, Paper or Scissors?");
+      //lowercase & validate
+      userChoice = userChoice.toLowerCase();
+      if (userChoice == "rock" || userChoice == "paper" || userChoice == "scissors") {
+        return userChoice;
+      } else {
+        alert("That doesn't look like rock, paper or scissors...");
+        playerPlay();
+      }
+    }
+
+    //compare user and computer choice
+    function playRound(playerSelection, computerSelection) {
+      playerSelection = playerPlay();
+      computerSelection = computerPlay();
+      let playerWin;
+      
+      //check for draw
+      if (playerSelection === computerSelection) {
+        alert(`WOW! ${computerSelection} against ${playerSelection} it's a draw!`);
+      } else if (playerSelection != computerSelection) {
+        
+        if (playerSelection == "rock") {
+          if (computerSelection == "scissors") {
+            playerWin = true;
+          } else {
+            playerWin = false;
+          }
+        }
+
+        if (playerSelection == "paper") {
+          if (computerSelection == "rock") {
+            playerWin = true;
+          } else {
+            playerWin = false;
+          }
+        }
+
+        if (playerSelection == "scissors") {
+          if (computerSelection == "paper") {
+            playerWin = true;
+          } else {
+            playerWin = false;
+          }
+        }
+        
+        if (playerWin == true) {
+          alert(`You win! ${playerSelection} beats ${computerSelection}.`);
+          return true;
+        } else if (playerWin == false) {
+          alert(`You loose! ${computerSelection} beats ${playerSelection}`);
+          return false;
+        }
+      }
+    }
+
+    
+  </script>
+</body>
+
+</html>
