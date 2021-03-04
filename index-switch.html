@@ -21,6 +21,15 @@
 
 
   <script>
+
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+      button.addEventListener('click', ()=>{
+        alert(button.id);
+      });
+    });
+
+
     //play 5 round game 
     /*function game(win){
       let computerScore = 0;
