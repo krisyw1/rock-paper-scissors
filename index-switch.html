@@ -21,13 +21,18 @@
 
 
   <script>
+    let useChoice, computerChoice;
 
     const buttons = document.querySelectorAll('button');
-    buttons.forEach((button) => {
-      button.addEventListener('click', ()=>{
-        alert(button.id);
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          userChoice=button.id;
+          computerChoice = (["paper","scissors","rock"])[Math.random() * 3 | 0];
+          playRound();
+        })
+        
       });
-    });
+ 
 
 
     //play 5 round game 
@@ -57,44 +62,12 @@
         alert(`Well done! you won ${playerScore} to ${computerScore}.  ${draws} draws.`);
       }
     }*/
-    
-
-
-    //computer chooses
-    function computerPlay() {
-      let randoNum = Math.floor(Math.random() * 3) + 1;
-      switch (randoNum){
-        case 1:
-          return "rock";
-        break;
-        case 2:
-          return "paper";
-        break;
-        case 3: 
-          return "scissors";
-        break;
-      }
-
-    }
-
-    function playerPlay() {
-      let userChoice = prompt("Rock, Paper or Scissors?");
-      do{
-        userChoice = userChoice.toLowerCase();
-        if (userChoice == "rock" || userChoice == "paper" || userChoice == "scissors") {
-         return userChoice;
-        } else {
-         alert("That doesn't look like rock, paper or scissors...");
-         userChoice = prompt("Rock, Paper or Scissors?");
-        }
-      }
-      while (userChoice != "rock" || userChoice != "paper" || userChoice != "scissors");
-    }
+     
 
     //compare user and computer choice
     function playRound(playerSelection, computerSelection) {
-      playerSelection = playerPlay();
-      computerSelection = computerPlay();
+      playerSelection = userChoice;
+      computerSelection = computerChoice;
       let playerWin;
 
       switch (playerSelection){
