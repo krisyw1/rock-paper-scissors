@@ -15,12 +15,24 @@ let useChoice, computerChoice;
     const round = document.createElement('div');
       round.classList.add('round');
 
+    const scoreArea = document.createElement('div');
+      scoreArea.classList.add('scoreArea')
+
+    const gameScore = document.createElement('h2');
+    
+    const resetButton = document.createElement('button');
+      resetButton.textContent = "Reset!";
+      resetButton.setAttribute('id', 'resetButton')
+      //resetButton.style.visibility = 'hidden';
+    
+
     //play 5 round game 
-    /*function game(win){
+    function game(win){
       let computerScore = 0;
       let playerScore = 0;
       let draws = 0;
       for (let i = 0; i < 5; i++){
+
         let win = playRound();
         switch (win){
           case 1: 
@@ -43,7 +55,7 @@ let useChoice, computerChoice;
       }else if (playerScore > computerScore){
         alert(`Well done! you won ${playerScore} to ${computerScore}.  ${draws} draws.`);
       }
-    }*/
+    }
      
 
     //compare user and computer choice
@@ -100,3 +112,5 @@ let useChoice, computerChoice;
     };
 
     resultsArea.appendChild(round);
+    resultsArea.appendChild(scoreArea);
+    resultsArea.appendChild(resetButton);
