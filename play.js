@@ -1,4 +1,4 @@
-let useChoice, computerChoice;
+let useChoice, computerChoice, computerScore, playerScore, draws;
 
     const buttons = document.querySelectorAll('button');
       buttons.forEach((button) => {
@@ -6,7 +6,7 @@ let useChoice, computerChoice;
           userChoice=button.id;
           computerChoice = (["paper","scissors","rock"])[Math.random() * 3 | 0];
           playRound();
-        })
+        });
         
       });
  
@@ -23,14 +23,16 @@ let useChoice, computerChoice;
     const resetButton = document.createElement('button');
       resetButton.textContent = "Reset!";
       resetButton.setAttribute('id', 'resetButton')
-      //resetButton.style.visibility = 'hidden';
+      resetButton.style.visibility = 'hidden';
+      resetButton.addEventListener('click', () =>{
+        //reset scores
+        //make game buttons active
+      });
     
 
     //play 5 round game 
     function game(win){
-      let computerScore = 0;
-      let playerScore = 0;
-      let draws = 0;
+      
       for (let i = 0; i < 5; i++){
 
         let win = playRound();
